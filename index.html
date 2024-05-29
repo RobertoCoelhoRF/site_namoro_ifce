@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade para Namoro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="img/icone.png">
+</head>
+<!--Somente cálculo da idade-->
+<body>
+    <div class="titulo">CALCULADORA DO AMOR</div>
+<section>
+    <div>
+        <img class="imagem" src="img/pessoa.png" alt="pessoa apaixonada com um celular">
+    </div>
+    <div class="container1">
+        <h1>Calcule a menor idade que você pode namorar!</h1>
+        <p>Escreva sua idade em meses ou anos</p>
+        <select id="unidadeIdade">
+            <option value="anos">Anos</option>
+            <option value="meses">Meses</option>
+        </select>
+        <input type="number" id="idade" placeholder="Sua idade">
+        <button onclick="calcularIdade()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+</section>
+    <script>
+        function calcularIdade() {
+            var unidadeIdade = document.getElementById("unidadeIdade").value;
+            var idade = Number(document.getElementById("idade").value);
+            var resultado, resultadomax;
+
+            if (unidadeIdade === "meses") {
+                resultado = Math.floor(((idade/12/ 2) + 7)*12);
+                resultadomax = Math.floor(((((idade/12)- 7)*2)*12));
+                var mensagem;
+            if (idade <= 13*12) {
+                mensagem = "Você não pode namorar!";
+            } else if (idade>100*12) {
+                mensagem = `Você não pode namorar de acordo com a lei 8.112 da Constituição Federal`;
+            } else  {
+                mensagem = `Você só pode namorar alguém que tenha a idade a partir dos: ${resultado} meses e a idade máxima de ${resultadomax} meses`;
+            }
+            document.getElementById("resultado").innerText = mensagem;
+            } else {
+                resultado = Math.floor((idade / 2) + 7);
+                resultadomax = Math.floor(((idade-7)*2));
+                var mensagem;
+            if (idade <= 13) {
+                mensagem = "Você não pode namorar!";
+            } else if (idade>100) {
+                mensagem = `Você não pode namorar de acordo com a lei 8.112 da Constituição Federal`;
+            } else  {
+                mensagem = `Você só pode namorar alguém que tenha a idade a partir dos: ${resultado} anos e a idade máxima de ${resultadomax} anos`;
+            }
+
+            document.getElementById("resultado").innerText = mensagem;
+            }
+
+            
+        }
+    </script>
+<!--Comparativo de casal-->
+<section>
+    <div class="container2">
+        <h1>Compare a sua idade com a de outra pessoa e olhe se podem namorar!</h1>
+        <div class="input-group">
+            <div>
+                <label for="idade1">Idade da Pessoa 1:</label>
+                <select id="unidadeIdade1">
+                    <option value="anos">Anos</option>
+                    <option value="meses">Meses</option>
+                </select>
+                <input type="number" id="idade1" placeholder="Idade">
+            </div>
+            <div>
+                <label for="idade2">Idade da Pessoa 2:</label>
+                <select id="unidadeIdade2">
+                    <option value="anos">Anos</option>
+                    <option value="meses">Meses</option>
+                </select>
+                <input type="number" id="idade2" placeholder="Idade">
+            </div>
+        </div>
+        <button onclick="calcularIdades()">Calcular</button>
+        <p id="resultados"></p>
+    </div>
+    <div>
+        <img class="imagem" src="img/foto_casal.png" alt="imagem de casal">
+    </div>
+</section>
+    <script>
+        function calcularIdades() {
+            var unidadeIdade1 = document.getElementById("unidadeIdade1").value;
+            var idade1 = Number(document.getElementById("idade1").value);
+            var unidadeIdade2 = document.getElementById("unidadeIdade2").value;
+            var idade2 = Number(document.getElementById("idade2").value);
+
+            var resultado1, resultado2;
+
+            if (unidadeIdade1 === "meses" && unidadeIdade2 === "meses") {
+                resultado1 = Math.floor((idade1 / 12 / 2) + 7);
+                resultado2 = Math.floor((idade2 / 12 / 2) + 7);
+                var mensagem;
+                if (idade1 <= 13*12 || idade2 <= 13*12) {
+                    mensagem = "Ambas as pessoas devem ter pelo menos 13 anos para namorar.";
+                }
+                else if (idade1 > 100*12 || idade2 > 100*12) {
+                    mensagem = "Eles não podem namorar de acordo com a lei 8.112 da Constituição Federal!";
+                } else if (resultado1<=idade2/12 && idade1/12>=resultado2) {
+                    mensagem = "Eles podem namorar!";
+                }
+                else if (resultado2<=idade1/12 && idade2/12>=resultado1) {
+                    mensagem = "Eles podem namorar!";
+                } else {
+                    mensagem = "Eles não podem namorar.";
+                }
+
+                document.getElementById("resultados").innerText = mensagem;
+                }
+                else if(unidadeIdade1 === "anos" && unidadeIdade2 === "anos"){
+                resultado1 = Math.floor((idade1 / 2) + 7);
+                resultado2 = Math.floor((idade2 / 2) + 7);
+                var mensagem;
+
+                if (idade1 <= 13 || idade2 <= 13) {
+                    mensagem = "Ambas as pessoas devem ter pelo menos 13 anos para namorar.";
+                }
+                else if (idade1 > 100 || idade2 > 100) {
+                    mensagem = "Eles não podem namorar de acordo com a lei 8.112 da Constituição Federal!";
+                } else if (resultado1<=idade2 && idade1>=resultado2) {
+                    mensagem = "Eles podem namorar!";
+                }
+                else if (resultado2<=idade1 && idade2>=resultado1) {
+                    mensagem = "Eles podem namorar!";
+                } else {
+                    mensagem = "Eles não podem namorar.";
+                }
+
+                document.getElementById("resultados").innerText = mensagem;
+            } else{
+                mensagem = "Coloque ambos na mesma unidade!"
+                document.getElementById("resultados").innerText = mensagem;
+            }
+
+    
+           
+        }
+    </script>
+
+<!--Comparativo de Trisal-->
+<section>
+    
+    <div>
+        <img class="imagem" src="img/trisal.png" alt="foto de trisal">
+    </div>
+    <div class="container3">
+        <h1>Compare a sua idade com a de outras duas pessoas e olhe se podem ser um trisal!</h1>
+        <div class="input-group">
+            <div>
+                <label for="idade1">Idade da Pessoa 1:</label>
+                <select id="unidadeIdadetri1">
+                    <option value="anos">Anos</option>
+                    <option value="meses">Meses</option>
+                </select>
+                <input type="number" id="idadetri1" placeholder="Idade">
+            </div>
+            <div>
+                <label for="idade2">Idade da Pessoa 2:</label>
+                <select id="unidadeIdadetri2">
+                    <option value="anos">Anos</option>
+                    <option value="meses">Meses</option>
+                </select>
+                <input type="number" id="idadetri2" placeholder="Idade">
+            </div>
+            <div>
+                <label for="idade3">Idade da Pessoa 3:</label>
+                <select id="unidadeIdadetri3">
+                    <option value="anos">Anos</option>
+                    <option value="meses">Meses</option>
+                </select>
+                <input type="number" id="idadetri3" placeholder="Idade">
+            </div>
+        </div>
+        <button onclick="calcularIdades3()">Calcular</button>
+        <p id="resultados3"></p>
+    </div>
+    
+</section>
+<script>
+    function calcularIdades3() {
+        var unidadeIdade1 = document.getElementById("unidadeIdadetri1").value;
+        var idade1 = Number(document.getElementById("idadetri1").value);
+        var unidadeIdade2 = document.getElementById("unidadeIdadetri2").value;
+        var idade2 = Number(document.getElementById("idadetri2").value);
+        var unidadeIdade3 = document.getElementById("unidadeIdadetri3").value;
+        var idade3 = Number(document.getElementById("idadetri3").value);
+
+        var resultado1, resultado2, resultado3;
+
+        if (unidadeIdade1 === "meses" && unidadeIdade2 === "meses" && unidadeIdade3 === "meses") {
+            resultado1 = Math.floor((idade1 / 12 / 2) + 7);
+            resultado2 = Math.floor((idade2 / 12 / 2) + 7);
+            resultado3 = Math.floor((idade2 / 12 / 2) + 7);
+            var mensagem;
+            if (idade1 <= 13*12 || idade2 <= 13*12 || idade3 <= 13*12) {
+                mensagem = "Todas as pessoas devem ter pelo menos 13 anos para namorar.";
+            }
+            else if (idade1 > 100*12 || idade2 > 100*12 || idade3 > 100*12) {
+                mensagem = "Eles não podem namorar de acordo com a lei 8.112 da Constituição Federal!";
+            } else if (resultado1<=idade2/12 && idade1/12>=resultado2) {
+                mensagem = "Eles podem namorar!";
+            }
+            else if (resultado2<=idade1/12 && idade2/12>=resultado1) {
+                mensagem = "Eles podem namorar!";
+            } else {
+                mensagem = "Eles não podem namorar.";
+            }
+
+            document.getElementById("resultados").innerText = mensagem;
+            }
+        else if(unidadeIdade1 === "anos" && unidadeIdade2 === "anos" && unidadeIdade3 === "anos") {
+            resultado1 = Math.floor((idade1 / 2) + 7);
+            resultado2 = Math.floor((idade2 / 2) + 7);
+            resultado3 = Math.floor((idade2 / 2) + 7);
+            var mensagem;
+
+            if (idade1 <= 13 || idade2 <= 13 || idade3 <= 13) {
+                mensagem = "Todas as pessoas devem ter pelo menos 13 anos para namorar.";
+            }
+            else if (idade1 > 100 || idade2 > 100 || idade3 > 100) {
+                mensagem = "Eles não podem namorar de acordo com a lei 8.112 da Constituição Federal!";
+            } else if (resultado1<=idade2 && resultado1<=idade3 && idade1>=resultado2 && idade1>=resultado3) {
+                mensagem = "Eles podem namorar!";
+            }
+            else if (resultado2<=idade1 && resultado2<=idade3 && idade2>=resultado1 && idade2>=resultado3) {
+                mensagem = "Eles podem namorar!";
+            } else if (resultado3<=idade1 && resultado2<=idade2 && idade3>=resultado1 && idade2>=resultado2) {
+                mensagem = "Eles podem namorar!";
+            }
+            else {
+                mensagem = "Eles não podem namorar.";
+            }
+
+            document.getElementById("resultados3").innerText = mensagem;
+        }else{
+                mensagem = "Coloque todos na mesma unidade!"
+                document.getElementById("resultados3").innerText = mensagem;
+            }
+    }
+</script>
+</body>
+<footer>2024 Roberto Coelho Rocha Filho @Todos os direitos reservados</footer>
+</html>
