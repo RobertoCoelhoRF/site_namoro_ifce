@@ -9,60 +9,46 @@ body {
     align-items: center;
     background-image: url(img/fundo.png);
 }
-section{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin: 2rem;
-    height: auto;
-}
+
 .titulo{
     font-size: 46px;
     margin: auto;
     margin-top: 3rem;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: aquamarine;
     font-family: "Dancing Script", cursive;
-    background-color: darkred;
     width: 60rem;
 }
 
+.container {
+    margin: 2rem 2rem;
+    height: 10vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+.terciario{
+    height: auto;
+    align-items: center;
+    margin: 0 5rem 3rem 5rem;
+    background-image: url(img/fundocontainer.png);
+    
+}
+
+.secundario__imagem {
+    left: 30px;
+    width: 100%;
+    font-weight: bold;
+}
+
 .container1 {
-    background-image: url(img/fundocontainer.png);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-size: 25px;
-    padding-top: 10rem;
-    
+    padding-left: 5rem;
+    color: darkmagenta  ;
 }
 
-.container2 {
-    background-image: url(img/fundocontainer.png);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-size: 25px;
-    padding-top: 10rem;
-    
-}
-.container3 {
-    background-image: url(img/fundocontainer.png);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-size: 25px;
-    padding-top: 10rem;
-}
-
-.imagem{
-   display: block;
-   margin: 0;
-}
 
 h1 {
     margin-top: 0;
