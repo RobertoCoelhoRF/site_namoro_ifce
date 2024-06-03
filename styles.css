@@ -18,9 +18,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: aquamarine;
+    color: pink;
     font-family: "Dancing Script", cursive;
     width: 60rem;
+    
 }
 
 .container {
@@ -34,7 +35,7 @@ body {
     height: auto;
     align-items: center;
     margin: 0 5rem 3rem 5rem;
-    background-image: url(img/fundocontainer.png);
+    background-image: url(img/fundocoracao.png);
     
 }
 
@@ -42,11 +43,12 @@ body {
     left: 30px;
     width: 100%;
     font-weight: bold;
+   
 }
 
 .container1 {
     padding-left: 5rem;
-    color: darkmagenta  ;
+   margin: 1rem;
 }
 
 
